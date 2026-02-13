@@ -1,21 +1,30 @@
-// YES button
-document.getElementById('yes').onclick = () => {
-    alert("Yayyyy! 😍💖 My heart is exploding right now!\nYou're officially my Valentine forever, my love 💘\nI love you more than anything in this world ❤️");
-  };
-  
-  // NO button runs away (improved bounds for mobile)
+// YES button (unchanged, but keeping the safer version)
+document.addEventListener('DOMContentLoaded', () => {
+  const yesBtn = document.getElementById('yes');
+  if (yesBtn) {
+    yesBtn.onclick = () => {
+      alert("Yayyyy! 😍💖 My heart is exploding right now!\nYou're officially my Valentine forever, my love 💘\nI love you more than anything in this world ❤️");
+      // Optional fun: change background color after yes
+      document.body.style.background = "linear-gradient(to bottom, #ff4081, #ffeb3b)";
+    };
+  }
+
+  // NO button: vanishes on click/tap
   const noBtn = document.getElementById('no');
-  noBtn.onmouseover = noBtn.ontouchstart = () => {  // Add touch for mobile
-    const maxX = window.innerWidth - 220;  // smaller buffer for phones
-    const maxY = window.innerHeight - 180;
-    const newX = Math.random() * maxX;
-    const newY = Math.random() * maxY;
-    noBtn.style.left = newX + 'px';
-    noBtn.style.top = newY + 'px';
-    noBtn.style.transform = 'none';
-  };
-  
-  // Floating hearts
+  if (noBtn) {
+    noBtn.onclick = () => {
+      noBtn.style.opacity = '0';
+      noBtn.style.pointerEvents = 'none';  // can't click again
+      noBtn.style.transition = 'opacity 0.6s ease';  // smooth fade
+
+      // Optional: tiny funny message after it vanishes
+      setTimeout(() => {
+        alert("Oops... the NO button disappeared! 😅\nGuess your heart already knows the answer is YES 💕");
+      }, 700);  // slight delay so fade is visible first
+    };
+  }
+
+  // Floating hearts (unchanged)
   const emojis = ["❤️", "💕", "💖", "😍", "💘", "🥰", "💗", "✨"];
   function createHeart() {
     const heart = document.createElement('div');
@@ -27,4 +36,5 @@ document.getElementById('yes').onclick = () => {
     setTimeout(() => heart.remove(), 15000);
   }
   setInterval(createHeart, 800);
-  createHeart(); // start right away
+  createHeart(); // start immediately
+});
