@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ff9a9e 0%, #fad0c4 100%);
+    color: #c2185b;
+    overflow-x: hidden;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    max-width: 90%;
+    width: 700px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
+  }
+  
+  .photos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .photos img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    object-fit: cover;
+  }
+  
+  .heart-between {
+    font-size: 80px;
+    align-self: center;
+  }
+  
+  h1 {
+    font-size: 2.8em;
+    margin: 20px 0 10px;
+    text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
+  }
+  
+  .letter {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 25px;
+    border-radius: 25px;
+    margin: 25px 0;
+    font-size: 1.25em;
+    line-height: 1.7;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  }
+  
+  .buttons {
+    margin: 40px 0;
+    position: relative;
+    min-height: 100px; /* space for moving no button */
+  }
+  
+  button {
+    font-size: 1.6em;
+    padding: 15px 50px;
+    margin: 15px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    touch-action: manipulation; /* better mobile touch */
+  }
+  
+  #yes {
+    background: #4caf50;
+    color: white;
+  }
+  
+  #yes:hover, #yes:active {
+    transform: scale(1.1);
+    background: #388e3c;
+  }
+  
+  #no {
+    background: #f44336;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #no:hover, #no:active {
+    background: #d32f2f;
+  }
+  
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    font-size: 2.8em;
+    pointer-events: none;
+    animation: rise 10s linear infinite;
+    opacity: 0;
+  }
+  
+  @keyframes rise {
+    0% { transform: translateY(120vh) rotate(0deg); opacity: 0.9; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-20vh) rotate(1080deg); opacity: 0; }
+  }
+  
+  /* ──────────────────────────────────────
+     MOBILE RESPONSIVE (≤ 600px)
+  ────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+      max-width: 95%;
+    }
+  
+    h1 {
+      font-size: 2.2em;
+    }
+  
+    .letter {
+      font-size: 1.1em;
+      padding: 20px;
+    }
+  
+    .photos {
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .photos img {
+      width: 140px;
+      height: 140px;
+    }
+  
+    .heart-between {
+      font-size: 60px;
+      margin: 10px 0;
+    }
+  
+    button {
+      font-size: 1.4em;
+      padding: 12px 40px;
+      margin: 10px;
+    }
+  
+    #no {
+      position: absolute;
+      /* Still absolute, but we'll let JS handle random positioning better on small screens */
+    }
+  }
