@@ -158,4 +158,8 @@ body {
       position: absolute;
       /* Still absolute, but we'll let JS handle random positioning better on small screens */
     }
+    #no {
+    transition: opacity 0.6s ease;  /* smooth fade when we change opacity in JS */
+    }
+
   }
